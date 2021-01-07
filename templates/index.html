@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <form id="form" action="/" method="post", "get">
+        <div class="sidenav">
+            <p class="dropdown-btn title"><b>FILTER BY PROPERTIES</b></p>
+            {% for i in range(21) %}
+                {% set dictionary = values[i] %}
+                {% for header in LIST %}
+                    {% if header in dictionary %}
+                        {% set items = dictionary[header] %}
+                        <p class="dropdown-btn"><b>{{ header | replace("_", " ") | capitalize }}</b></p>
+                        <div class="dropdown-container">
+                        {% for item in items %}
+                            <p>
+                                <input name="{{ header }}" type="checkbox" onchange="$('#form').submit();" value="{{ item }}"> {{ item }}
+                            </p>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </form>
+
+    <div class="main">
+        <h2 style="text-align:center; color:black;"><b>INDEX</b></h2>
+        <form method="post">
+            {% for name in names %}
+                <button type="submit" name="min_name" class="btn-link" value="{{ name }}">·{{ name }}</button>
+            {% endfor %}
+        </form>
+    </div>
+
+
+{% endblock %}

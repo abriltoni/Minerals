@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {% for value in values %}
+        {{ value["name"] }}
+    {% endfor %}
+{% endblock %}
+
+{% block main %}
+    {% for value in values %}
+        <h1>MAIN CHARACTERISTICS OF {{ value["name"]|upper }}</h1>
+        <div>
+            <h2>OPTICAL PROPERTIES</h2>
+            <p><b>Streak Test: </b>{{ value["streak"] }}</p>
+            <p><b>Color of the Mineral: </b>{{ value["color"] }} <b>Patina: </b>{{ value["patina"] }} <b>Color of the patina: </b>{{ value["patina_color"] }}</p>
+            <p><b>Luster: </b>{{ value["luster"] }}</p>
+            <p><b>Crystal System: </b>{{ value["crystal_system"] }} <b>Crystal Shape: </b>{{ value["crystal_shape"] }}</p>
+            <p><b>Face Surface: </b>{{ value["face_surface"] }}</p>
+            <p><b>External Aspect: </b>{{ value["external_aspect"] }}</p>
+            <p><b>Diaphanety: </b>{{ value["diaphanety"] }}</p>
+        </div>
+        <div>
+            <h2>MECHANIC PROPERTIES</h2>
+            <p><b>Mohs hardness: </b>{{ value["mohs_hardness"] }} <b>Specific gravity: </b>{{ value["specific_gravity"] }}</p>
+            <p><b>Exfoliation: </b>{{ value["exfoliation"] }}</p>
+            <p><b>Cleavage: </b>{{ value["cleavage"] }}</p>
+            <p><b>Tenacity: </b>{{ value["tenacity"] }}</p>
+        </div>
+        <div>
+            <h2>OTHER PROPERTIES</h2>
+            <p><b>Induced magnetism: </b>{{ value["induced_magnetism"] }}</p>
+            <p><b>Radioactivity(cps): </b>{{ value["radioactivity_cps"] }}</p>
+            <p><b>Touch: </b>{{ value["touch"] }} <b>Taste: </b>{{ value["taste"] }} <b>Smell: </b>{{ value["smell"] }}</p>
+            <p><b>Effervescence: </b>{{ value["effervescence"] }}</p>
+        </div>
+        <div>
+            <a href="https://www.google.com/search?q={{ value['name'] }}" target="_blank" style="color:blue;"><b>Search {{ value['name'] }} on Google</b></a>
+        </div>
+    {% endfor %}
+{% endblock %}

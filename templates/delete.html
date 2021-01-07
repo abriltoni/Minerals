@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete
+{% endblock %}
+
+{% block main %}
+    <h1>Select the mineral you want to delete</h1>
+    <form id="req_alert" action="/delete" method="post", "get">
+        <div class="form-group">
+            <select name="name" required>
+                <option disabled selected value="">Mineral</option>
+                {% for name in names %}
+                    <option value="{{name}}">{{name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit" onclick="myFunction()">Delete</button>
+    </form>
+    <script>
+        var form = document.getElementById("req_alert");
+
+        function muFunction() {
+            if (form.checkValidity()) {
+                alert("Mineral Successfully deleted!!");
+            }
+        }
+    </script>
+{% endblock %}

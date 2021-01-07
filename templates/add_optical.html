@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Properties of {{name}}
+{% endblock %}
+
+{% block main %}
+    <h1> Optical properties of {{name}}</h1>
+    <form action="/add" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="streak" placeholder="Streak Test Color" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="color" placeholder="Color of the mineral" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="patina" placeholder="Patina(yes/no)" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="patina_color" placeholder="Color of the patina" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="luster" placeholder="Luster" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="crystal_system" placeholder="Crystal system" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="crystal_shape" placeholder="Crystal shape" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="face_surface" placeholder="Face's surface" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="external_aspect" placeholder="External Aspect" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="diaphanety" placeholder="Diaphanety" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+{% endblock %}

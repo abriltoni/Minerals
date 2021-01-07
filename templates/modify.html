@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Modify
+{% endblock %}
+
+{% block main %}
+    <h1>Select a mineral and the property to modify</h1>
+    <form action="/modify" method="post", "get">
+        <div class="form-group">
+
+            <select name="name" required>
+                <option disabled selected value="">Mineral</option>
+                {% for name in names %}
+                    <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+
+            <select name="properties" id="prprty" onchange="selectFunction(this);" required>
+                <option disabled selected value="">Property</option>
+                {% for property in properties %}
+                    <option value="{{ property }}">{{ property | replace("_", " ") | capitalize }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" id="myModification" name="modification" placeholder="Write the modification" type="text" step="" min="">
+        </div>
+
+        <button class="btn btn-primary" type="submit">Modify</button>
+    </form>
+
+    <script>
+        //https://stackoverflow.com/questions/14976495/get-selected-option-text-with-javascript
+        function selectFunction(sel)
+        {
+            name = sel.options[sel.selectedIndex].value;
+            if (name === "mohs_hardness" || name === "specific_gravity" || name === "radioactivity_cps")
+            {
+                document.getElementById("myModification").type = "number";
+                document.getElementById("myModification").step = "0.01";
+                document.getElementById("myModification").min = "0";
+            } else
+            {
+                document.getElementById("myModification").type = "text";
+                document.getElementById("myModification").step = "";
+                document.getElementById("myModification").min = "";
+            }
+
+        }
+    </script>
+{% endblock %}

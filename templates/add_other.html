@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Properties of {{name}}
+{% endblock %}
+
+{% block main %}
+    <h1>Add other properties of {{name}}</h1>
+    <form action="/add" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="induced_magnetism" placeholder="Induced magnetism" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="radioactivity_cps" placeholder="Radioacitvity in CPS" type="number" step="0.01" min="0">
+            <input autocomplete="off" autofocus class="form-control" name="touch" placeholder="Touch" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="taste" placeholder="Taste" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="smell" placeholder="Smell" type="text">
+            <input autocomplete="off" autofocus class="form-control" name="effervescence" placeholder="Effervescence" type="text">
+
+        </div>
+        <button class="btn btn-primary" type="submit" onclick="alert('{{ name | capitalize }} saved correctly!!')">Save</button>
+    </form>
+{% endblock %}
